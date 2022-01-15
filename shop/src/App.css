@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.container-fluid {
+  background-image: url('./background.jpg');
+  background-size: cover;
+}
