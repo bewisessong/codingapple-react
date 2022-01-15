@@ -1,9 +1,17 @@
 import logo from './logo.svg';
+import React, { useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import './App.css';
+import Data from './data';
 
 function App() {
+
+  /* 01/15(토) : import/export 사용하기 */
+  let [shoes, setShoes] = useState(Data);
+  console.log(shoes);
+  
   return (
+    /* 01/15(토) : 쇼핑몰 레이아웃 디자인 */
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
@@ -25,9 +33,9 @@ function App() {
         </Container>
       </Navbar>
 
-      <div class="container-fluid text-light p-5">
-        <div class="container p-5">
-            <h1 class="display-4">20% Season Off</h1>
+      <div className="container-fluid text-light p-5">
+        <div className="container p-5">
+            <h1 className="display-4">20% Season Off</h1>
             <p>Go to My Website</p>
             <Button variant="primary">Learn more</Button>{' '}
         </div>
@@ -38,18 +46,18 @@ function App() {
         <div className="row">
           <div className="col-md-4">
             <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[0].title}</h4>
+            <p>{shoes[0].content} {shoes[0].price}</p>
           </div>
           <div className="col-md-4">
             <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[1].title}</h4>
+            <p>{shoes[1].content} {shoes[1].price}</p>
           </div>
           <div className="col-md-4">
             <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[2].title}</h4>
+            <p>{shoes[2].content} {shoes[2].price}</p>
           </div>
         </div>
       </div>
