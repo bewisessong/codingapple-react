@@ -60,8 +60,9 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/detail">
-          <Detail />
+        {/* 01/16(일) : React Router 3 - URL파라미터로 상세페이지 만들기 */}
+        <Route path="/detail/:id">
+          <Detail shoes={shoes}/>
         </Route>
 
         <Route path="/:id">
