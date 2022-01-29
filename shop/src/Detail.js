@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+let Box = styled.div`
+  padding: 20px;
+`;
+
+let Title = styled.h4`
+  font-size: 25px;
+  color: ${props => props.color}
+`;
 
 function Detail(props) {
 
@@ -12,6 +22,9 @@ function Detail(props) {
 
   return (
     <div className="container">
+      <Box>
+        <Title color="blue">Detail</Title>
+      </Box>
       <div className="row">
         <div className="col-md-6">
           <img src={ 'https://codingapple1.github.io/shop/shoes'+ (parseInt(id) + 1) +'.jpg' } width="100%" />
