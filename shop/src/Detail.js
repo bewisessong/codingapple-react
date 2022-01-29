@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import './Detail.scss';
 
+/* 01/29(토) : styled-components로 CSS 스타일링하기 */
 let Box = styled.div`
   padding: 20px;
 `;
@@ -22,9 +24,16 @@ function Detail(props) {
 
   return (
     <div className="container">
+      {/* 01/29(토) : styled-components로 CSS 스타일링하기 */}
       <Box>
-        <Title color="blue">Detail</Title>
+        {/* <Title color="blue">Detail</Title> */}
+        <Title className="red">Detail</Title>
       </Box>
+      {/* 01/29(토) : SASS를 이용한 CSS 스타일링 - @extned */}
+      <div className="my-alert-mixin">
+        <p>재고가 얼마 남지 않았습니다</p>
+      </div>
+
       <div className="row">
         <div className="col-md-6">
           <img src={ 'https://codingapple1.github.io/shop/shoes'+ (parseInt(id) + 1) +'.jpg' } width="100%" />

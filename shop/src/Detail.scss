@@ -1,0 +1,69 @@
+/* 01/29(토) : SASS를 이용한 CSS 스타일링 */
+
+/* 2. 다른 파일을 @import로 가져오자.
+      import만해서 사용하는 파일들은 파일명을 _파일명.scss로 작성하여 컴파일이 불필요함을 나타낼 수 있다 */
+@import './reset.scss';
+
+/* 1. 변수에 데이터를 저장해서 쓰자.
+      $변수명 : 변수에넣을값 */
+$mainColor : #ff0000;
+
+.red { 
+  color: $mainColor;
+}
+
+/* 3. 셀렉터를 줄여주는 nesting 기능
+      아래 예제를 기존 css로 바꾸면
+      div.container h4 { color : blue; }
+      div.container p { color : green; } 이다! */
+// div.container {
+//   h4 {
+//     color: blue;
+//   }
+
+//   p {
+//     color: green;
+//   }
+// }
+
+/* 4. @extend 로 다른 클래스의 CSS 속성 모두 가져오기
+      : 거의 동일한 속성, 일부만 변경하고싶을 때에 사용한다 */
+.my-alert {
+  background-color: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+
+.my-alert p {
+  margin-bottom: 0;
+}
+
+.my-alert2 {
+  @extend .my-alert;
+  background:#ffe591;
+}
+
+
+/* 5. @mixin / @include
+      @mixin 함수명() { CSS 내용 }
+      => 가지고있는 CSS 속성을 함수로 대체
+      @include 함수명();
+      => @mixin으로 생성한 함수를 호출할 때에 사용함
+      !! 꼭 @mixin이 @include 앞에 선언될 것 !!
+*/
+@mixin funcName() {
+  background-color: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+
+.my-alert-mixin {
+  @include funcName();
+}
+
