@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -13,7 +13,36 @@ let Title = styled.h4`
   color: ${props => props.color}
 `;
 
+/* 01/29(토) : LifeCycle Hook */
+// class Detail2 extends React.Component {
+//   // LifeCycle Hook은 class로 선언된 Component에 사용한다
+//   componentDidMount() {
+//     // Detail2 Component가 Mount되었을 때 실행할 코드
+//   }
+
+//   componentWillUnmount() {
+//     // Detail2 Component가 Unmount될 때 실행할 코드
+//   }
+// }
+
 function Detail(props) {
+  /* 01/29(토) : useEffect - 2초 후에 alert 창 사라지게 하기 */
+  let [alert, setAlert] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAlert(!alert);
+    }, 2000);
+
+    /* 01/29(토) : useEffect - Unmount 시에 코드 실행
+    Arrow Func 사용 시 return () => { 실행할 코드 }
+    여러 개의 useEffect 사용 가능 + 작성한 순서대로 위에서부터 실행된다.
+    ! 반드시 한 useEffect에서 모든 것을 사용할 필요는 없음.
+    */
+    return function() {
+      // Unmount 시에 실행되는 코드
+    }
+  });
 
   let { id } = useParams();
   let history = useHistory();
@@ -30,9 +59,14 @@ function Detail(props) {
         <Title className="red">Detail</Title>
       </Box>
       {/* 01/29(토) : SASS를 이용한 CSS 스타일링 - @extned */}
-      <div className="my-alert-mixin">
-        <p>재고가 얼마 남지 않았습니다</p>
-      </div>
+      {/* 01/29(토) : useEffect - 2초 후에 alert 창 사라지게 하기 */}
+      {
+        alert == true?
+          <div className="my-alert2">
+            <p>재고가 얼마 남지 않았습니다</p>
+          </div>
+        : null
+      }
 
       <div className="row">
         <div className="col-md-6">
